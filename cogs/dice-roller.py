@@ -29,7 +29,7 @@ class Dice(commands.Cog):
                 roll_args.extend(to_mod)
 
                 try:
-                to_add = int(roll_args[2])
+                    to_add = int(roll_args[2])
                 except ValueError:
                     await ctx.send(SYNTAX_ERR)
                     return
@@ -39,7 +39,7 @@ class Dice(commands.Cog):
                 roll_args.extend(to_mod)
 
                 try:
-                to_add = -1 * int(roll_args[2])
+                    to_add = -1 * int(roll_args[2])
                 except ValueError:
                     await ctx.send(SYNTAX_ERR)
                     return
@@ -48,9 +48,9 @@ class Dice(commands.Cog):
         l_index = 0
 
         try:
-        while l_index < int(roll_args[0]):
-            result += random.randint(1, int(roll_args[1]))
-            l_index += 1
+            while l_index < int(roll_args[0]):
+                result += random.randint(1, int(roll_args[1]))
+                l_index += 1
         except ValueError:
             await ctx.send(SYNTAX_ERR)
             return
@@ -58,3 +58,6 @@ class Dice(commands.Cog):
         result += to_add
 
         await ctx.send(f'Result: {result}')
+
+def setup(bot):
+    bot.add_cog(Dice(bot))
